@@ -12,27 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout repository
-        uses: actions/checkout@v2
-
-      - name: setup node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - run: npm ci
 
-      - name: create credentials
-        run: echo ${{ secrets.GOOGLE_APIS_CREDENTIALS }} >> credentials.json
+      - run: echo ${{ secrets.GOOGLE_APIS_CREDENTIALS }} >> credentials.json
+      - run: echo ${{ secrets.GOOGLE_APIS_TOKEN }} >> token.json
 
-      - name: create token
-        run: echo ${{ secrets.GOOGLE_APIS_TOKEN }} >> token.json
+      - run: bash ./scripts/start.sh
 
-      - name: create events
-        run: |
-          npm install
-          bash ./scripts/start.sh
-
-      - name: send slack message
-        if: always()
+      - if: always()
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
