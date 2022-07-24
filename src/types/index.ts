@@ -1,1 +1,1 @@
-export * from './_metadata';
+export * from './_metadata/birthdayMetadata';
