@@ -6,7 +6,6 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
-
 env:
   GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
 
