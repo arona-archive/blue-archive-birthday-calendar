@@ -13,15 +13,23 @@ A birthday calendar for characters of Blue Archive
 ## Usage
 
 - Add to your Google Calendar
+
   - https://calendar.google.com/calendar?cid=Y182cmFmMWwxczBqc29pMDJlamc5bGppZjBrOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t
 
 - Embed into your website
 
 ```html
-<iframe src="https://calendar.google.com/calendar/embed?src=c_6raf1l1s0jsoi02ejg9ljif0k8%40group.calendar.google.com" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe
+  src="https://calendar.google.com/calendar/embed?src=c_6raf1l1s0jsoi02ejg9ljif0k8%40group.calendar.google.com"
+  style="border: 0"
+  width="800"
+  height="600"
+  frameborder="0"
+  scrolling="no"
+></iframe>
 ```
 
 ## External Links
 
 - [ブルーアーカイブ 公式ウェブサイト](https://bluearchive.jp/)
-- [ブルーアーカイブ 公式Twitter](https://twitter.com/blue_archivejp)
+- [ブルーアーカイブ 公式 Twitter](https://twitter.com/blue_archivejp)
