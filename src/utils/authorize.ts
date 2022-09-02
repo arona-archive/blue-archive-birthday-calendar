@@ -45,7 +45,7 @@ const getAccessToken = (oAuth2Client: Auth.OAuth2Client): Promise<Auth.OAuth2Cli
 				rl.close();
 				const token = await oAuth2Client.getToken(code);
 				oAuth2Client.setCredentials(token.tokens);
-				await fs.promises.writeFile(tokenPath, JSON.stringify(token));
+				await fs.promises.writeFile(tokenPath, JSON.stringify(token.tokens));
 				console.log('Token stored to', tokenPath);
 				resolve(oAuth2Client);
 			} catch (error) {

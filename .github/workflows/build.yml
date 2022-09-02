@@ -7,6 +7,8 @@ on:
     types: [opened, reopened, synchronize]
 
 env:
+  GOOGLE_APIS_CREDENTIALS: ${{ secrets.GOOGLE_APIS_CREDENTIALS }}
+  GOOGLE_APIS_TOKEN: ${{ secrets.GOOGLE_APIS_TOKEN }}
   GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
 
 jobs:
@@ -19,9 +21,6 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-
-      - run: echo ${{ secrets.GOOGLE_APIS_CREDENTIALS }} >> credentials.json
-      - run: echo ${{ secrets.GOOGLE_APIS_TOKEN }} >> token.json
 
       - run: bash ./scripts/start.sh
 
