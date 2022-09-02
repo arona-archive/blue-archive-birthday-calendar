@@ -1,9 +1,9 @@
 import { createEvents } from './scripts';
 
+const main = async () => {
+	await createEvents();
+};
+
 (async () => {
-	try {
-		await createEvents();
-	} catch (error) {
-		console.error(error);
-	}
+	await main();
 })();
