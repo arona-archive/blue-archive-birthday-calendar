@@ -1,8 +1,7 @@
+import { IText } from './localizationMetadata';
+
 export interface Character {
-  id: number;
-  name: {
-    ko: string;
-    ja: string;
-  };
-  birthday: string;
+	id: number;
+	name: IText;
+	birthday: string;
 }
