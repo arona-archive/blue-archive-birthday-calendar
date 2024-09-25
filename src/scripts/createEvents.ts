@@ -83,6 +83,10 @@ export const createEvents = async () => {
 	for (const character of characters) {
 		console.log('character.id', character.id, character.birthday.slice(5), character.name.ja);
 
+		if (character.id === 10100) {
+			console.log(`skip: ${character.id} ${character.name}`);
+		}
+
 		const prevEvent = await getCalendarEvent(calendar, character.id);
 		const nextEvent = await convertCalendarEvent(character);
 
