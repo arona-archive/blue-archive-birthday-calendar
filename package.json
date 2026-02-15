@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/arona-archive/blue-archive-birthdays-calendar#readme",
   "dependencies": {
-    "googleapis": "^95.0.0"
+    "googleapis": "^171.4.0"
   },
   "devDependencies": {
     "@swc-node/register": "^1.11.1",
