@@ -1,7 +1,8 @@
-import GoogleApis, { google } from 'googleapis';
-import characters from '../_data/characters.json';
-import { Character } from '../types';
-import { authorize, convertEventId } from '../utils';
+import type GoogleApis from 'googleapis';
+import { google } from 'googleapis';
+import characters from '../_data/characters.json' with { type: 'json' };
+import type { Character } from '../types/index.js';
+import { authorize, convertEventId } from '../utils/index.js';
 
 type Calendar = GoogleApis.calendar_v3.Calendar;
 type CalendarEvent = GoogleApis.calendar_v3.Schema$Event;
@@ -21,7 +22,7 @@ const calendarEventEquals = (p: CalendarEvent, q: CalendarEvent): boolean => {
 
 const getCalendarEvent = async (
 	calendar: GoogleApis.calendar_v3.Calendar,
-	characterId: number
+	characterId: number,
 ): Promise<CalendarEvent | null> => {
 	try {
 		const res = await calendar.events.get({
@@ -30,7 +31,7 @@ const getCalendarEvent = async (
 		});
 		return res.data;
 	} catch (error) {
-		if ((error as any).code === 404) {
+		if (typeof error === 'object' && error !== null && 'code' in error && error.code === 404) {
 			return null;
 		}
 		throw error;
@@ -60,7 +61,7 @@ const updateCalendarEvent = async (calendar: Calendar, event: CalendarEvent) => 
 };
 
 const convertCalendarEvent = async (character: Character): Promise<CalendarEvent | null> => {
-	const [, month, date] = character.birthday.split('-');
+	const [, _month, date] = character.birthday.split('-');
 	return {
 		id: convertEventId(character.id),
 		summary: `${character.name.ja}の誕生日 / ${character.name.ko}의 생일`,

@@ -1,3 +1,1 @@
-export const convertEventId = (value: number) => {
-	return `${value}`.padStart(8, '0');
-};
+export const convertEventId = (value: number) => `${value}`.padStart(8, '0');

@@ -1,1 +1,1 @@
-export * from './_metadata/birthdayMetadata';
+export * from './_metadata/birthdayMetadata.js';

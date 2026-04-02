@@ -1,4 +1,4 @@
-import { IText } from './localizationMetadata';
+import type { IText } from './localizationMetadata.js';
 
 export interface Character {
 	id: number;

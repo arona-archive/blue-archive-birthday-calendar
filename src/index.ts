@@ -1,9 +1,7 @@
-import { createEvents } from './scripts';
+import { createEvents } from './scripts/index.js';
 
-const main = async () => {
+try {
 	await createEvents();
-};
-
-(async () => {
-	await main();
-})();
+} catch (error) {
+	console.error(error);
+}

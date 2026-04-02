@@ -13,7 +13,6 @@ A birthday calendar for characters of Blue Archive
 ## Usage
 
 - Add to your Google Calendar
-
   - https://calendar.google.com/calendar?cid=Y182cmFmMWwxczBqc29pMDJlamc5bGppZjBrOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t
 
 - Embed into your website

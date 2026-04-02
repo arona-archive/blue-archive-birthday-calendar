@@ -242,5 +242,6 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,node,visualstudiocode
 
+/build
 /credentials.json
 /token.json

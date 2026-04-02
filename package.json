@@ -4,7 +4,12 @@
   "private": true,
   "main": "./src/index.ts",
   "scripts": {
-    "start": "node -r @swc-node/register ./src/index.ts"
+    "start": "node --import @swc-node/register/esm-register ./src/index.ts",
+    "build": "tsc",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -16,11 +21,19 @@
   },
   "homepage": "https://github.com/arona-archive/blue-archive-birthdays-calendar#readme",
   "dependencies": {
-    "googleapis": "^171.4.0"
+    "googleapis": "^171.4.0",
+    "@sapphire-sh/utils": "^1.56.0"
   },
   "devDependencies": {
     "@swc-node/register": "^1.11.1",
     "@types/node": "^25.2.3",
-    "typescript": "^5.9.3"
-  }
+    "typescript": "^5.9.3",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-promise": "^7.2.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "typescript-eslint": "^8.58.0"
+  },
+  "type": "module"
 }

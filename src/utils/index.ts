@@ -1,2 +1,2 @@
-export * from './authorize';
-export * from './convert';
+export * from './authorize.js';
+export * from './convert.js';
