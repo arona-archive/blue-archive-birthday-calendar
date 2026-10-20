@@ -1,0 +1,14 @@
+name: node-verify
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    uses: sapphire-sh/github-actions/.github/workflows/node-verify-template.yml@main
+    permissions:
+      contents: read

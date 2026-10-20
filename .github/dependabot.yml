@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      dependencies:
+        patterns:
+          - '*'
+        exclude-patterns:
+          - '@sapphire-sh/utils'
+    cooldown:
+      exclude:
+        - '@sapphire-sh/utils'
+    ignore:
+      - dependency-name: '@sapphire-sh/utils'
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

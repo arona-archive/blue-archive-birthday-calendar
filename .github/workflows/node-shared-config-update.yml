@@ -1,0 +1,19 @@
+name: node-shared-config-update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - package-lock.json
+  workflow_dispatch:
+
+jobs:
+  update:
+    uses: sapphire-sh/github-actions/.github/workflows/node-shared-config-update-template.yml@main
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    secrets:
+      PULL_REQUEST_TOKEN: ${{ secrets.PULL_REQUEST_TOKEN }}

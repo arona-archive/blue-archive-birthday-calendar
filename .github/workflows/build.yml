@@ -6,20 +6,28 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
-env:
-  GOOGLE_APIS_CREDENTIALS: ${{ secrets.GOOGLE_APIS_CREDENTIALS }}
-  GOOGLE_APIS_TOKEN: ${{ secrets.GOOGLE_APIS_TOKEN }}
-  GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
-
 jobs:
+  verify:
+    uses: sapphire-sh/github-actions/.github/workflows/node-verify-template.yml@main
+    permissions:
+      contents: read
+    with:
+      runner: ubuntu-latest
+
   build:
+    needs: verify
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_APIS_CREDENTIALS: ${{ secrets.GOOGLE_APIS_CREDENTIALS }}
+      GOOGLE_APIS_TOKEN: ${{ secrets.GOOGLE_APIS_TOKEN }}
+      GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 18
+          node-version: 26
+          cache: npm
       - run: npm ci
 
       - run: bash ./scripts/start.sh

@@ -1,0 +1,12 @@
+name: dependabot-review-request
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  request:
+    uses: sapphire-sh/github-actions/.github/workflows/dependabot-review-request-template.yml@main
+    permissions:
+      pull-requests: write

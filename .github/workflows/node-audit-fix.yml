@@ -1,0 +1,16 @@
+name: node-audit-fix
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  fix:
+    uses: sapphire-sh/github-actions/.github/workflows/node-audit-fix-template.yml@main
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    secrets:
+      PULL_REQUEST_TOKEN: ${{ secrets.PULL_REQUEST_TOKEN }}
