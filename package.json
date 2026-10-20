@@ -5,7 +5,7 @@
 	"main": "./src/index.ts",
 	"scripts": {
 		"bootstrap": "sapphire-bootstrap",
-		"build": "tsc",
+		"build": "tsc -p tsconfig.build.json",
 		"start": "node --import @swc-node/register/esm-register ./src/index.ts",
 		"lint": "eslint src",
 		"lint:fix": "eslint src --fix",
@@ -27,16 +27,22 @@
 		"googleapis": "^186.0.0"
 	},
 	"devDependencies": {
+		"@eslint/js": "^10.0.1",
 		"@swc-node/register": "^1.12.1",
 		"@types/node": "^26.6.5",
+		"@typescript/native": "npm:typescript@^7.0.2",
 		"eslint": "^10.13.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-promise": "^7.3.0",
 		"prettier": "^3.9.10",
 		"prettier-plugin-organize-imports": "^4.1.0",
-		"typescript": "^7.0.2",
+		"typescript": "npm:@typescript/typescript6@^6.0.2",
 		"typescript-eslint": "^8.72.0",
 		"vitest": "^5.0.1"
 	},
-	"type": "module"
+	"type": "module",
+	"allowScripts": {
+		"@swc/core@1.16.18": false,
+		"fsevents@2.3.3": false
+	}
 }
