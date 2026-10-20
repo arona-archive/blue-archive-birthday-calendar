@@ -11,6 +11,10 @@ const { calendar, operations } = vi.hoisted(() => {
 					operations.push('insert');
 					return { data: {} };
 				}),
+				update: vi.fn(async () => {
+					operations.push('update');
+					return { data: {} };
+				}),
 				list: vi.fn(async ({ pageToken }: { pageToken?: string }) => {
 					operations.push('list');
 					return (pageToken ?? '')
@@ -63,6 +67,16 @@ it('deletes stale events after synchronizing characters across all pages', async
 it('skips calendar writes in dry run mode', async () => {
 	vi.stubEnv('GOOGLE_CALENDAR_ID', 'calendar-under-test');
 	vi.stubEnv('CALENDAR_DRY_RUN', 'true');
+	await createEvents();
+
+	expect(operations).toEqual(['list', 'list']);
+	expect(calendar.events.get.mock.calls).toEqual([[{ calendarId: 'calendar-under-test', eventId: '00000123' }]]);
+});
+
+it('skips calendar event updates in dry run mode', async () => {
+	vi.stubEnv('GOOGLE_CALENDAR_ID', 'calendar-under-test');
+	vi.stubEnv('CALENDAR_DRY_RUN', 'true');
+	calendar.events.get.mockResolvedValueOnce({ data: { id: '00000123', summary: 'Previous' } });
 	await createEvents();
 
 	expect(operations).toEqual(['list', 'list']);
