@@ -1,0 +1,27 @@
+{
+	"dependabot-review-request": {
+		"with": {
+			"runner": "ubuntu-latest"
+		}
+	},
+	"node-audit-fix": {
+		"with": {
+			"runner": "ubuntu-latest"
+		}
+	},
+	"node-shared-config-update": {
+		"with": {
+			"runner": "ubuntu-latest"
+		}
+	},
+	"node-utils-update": {
+		"with": {
+			"runner": "ubuntu-latest"
+		}
+	},
+	"node-verify": {
+		"with": {
+			"runner": "ubuntu-latest"
+		}
+	}
+}

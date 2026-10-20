@@ -17,3 +17,5 @@ jobs:
       pull-requests: write
     secrets:
       PULL_REQUEST_TOKEN: ${{ secrets.PULL_REQUEST_TOKEN }}
+    with:
+      runner: 'ubuntu-latest'

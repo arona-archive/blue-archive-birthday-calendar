@@ -12,3 +12,5 @@ jobs:
     uses: sapphire-sh/github-actions/.github/workflows/node-verify-template.yml@main
     permissions:
       contents: read
+    with:
+      runner: 'ubuntu-latest'

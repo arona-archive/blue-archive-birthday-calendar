@@ -10,3 +10,5 @@ jobs:
     uses: sapphire-sh/github-actions/.github/workflows/dependabot-review-request-template.yml@main
     permissions:
       pull-requests: write
+    with:
+      runner: 'ubuntu-latest'
