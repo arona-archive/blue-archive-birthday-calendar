@@ -78,6 +78,10 @@ const convertCalendarEvent = async (character: Character): Promise<CalendarEvent
 	};
 };
 
+export const logSkippedCharacter = (character: Character) => {
+	console.log('skip:', character.id, character.name);
+};
+
 export const createEvents = async () => {
 	const auth = await authorize();
 	const calendar = google.calendar({ version: 'v3', auth });
@@ -86,7 +90,7 @@ export const createEvents = async () => {
 		console.log('character.id', character.id, character.birthday.slice(5), character.name.ja);
 
 		if (character.id === 10100) {
-			console.log(`skip: ${character.id} ${character.name}`);
+			logSkippedCharacter(character);
 			continue;
 		}
 

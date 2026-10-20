@@ -37,10 +37,11 @@ vi.mock('../_data/characters.json', () => ({
 	default: [{ id: 123, birthday: '2000-01-01', name: { ja: 'Example', ko: 'Example' } }],
 }));
 
-import { createEvents } from './createEvents.js';
+import { createEvents, logSkippedCharacter } from './createEvents.js';
 
 afterEach(() => {
 	vi.unstubAllEnvs();
+	vi.restoreAllMocks();
 });
 
 it('deletes stale events after synchronizing characters across all pages', async () => {
@@ -56,4 +57,12 @@ it('deletes stale events after synchronizing characters across all pages', async
 		[{ calendarId: 'calendar-under-test', eventId: '00000456' }],
 		[{ calendarId: 'calendar-under-test', eventId: '00000789' }],
 	]);
+});
+
+it('logs the skipped character name as an object', () => {
+	const log = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+	logSkippedCharacter({ id: 10100, name: { ko: '아로나', ja: 'アロナ' }, birthday: '2000-01-01' });
+
+	expect(log).toHaveBeenCalledWith('skip:', 10100, { ko: '아로나', ja: 'アロナ' });
 });
