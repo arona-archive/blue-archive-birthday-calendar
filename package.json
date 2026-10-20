@@ -10,7 +10,8 @@
 		"lint": "eslint src",
 		"lint:fix": "eslint src --fix",
 		"prettier": "prettier --check .",
-		"prettier:fix": "prettier --write ."
+		"prettier:fix": "prettier --write .",
+		"test": "vitest run src"
 	},
 	"repository": {
 		"type": "git",
@@ -34,7 +35,8 @@
 		"prettier": "^3.5.3",
 		"prettier-plugin-organize-imports": "^4.1.0",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.58.0"
+		"typescript-eslint": "^8.58.0",
+		"vitest": "^5.0.1"
 	},
 	"type": "module"
 }

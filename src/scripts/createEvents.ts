@@ -2,6 +2,7 @@ import type GoogleApis from 'googleapis';
 import { google } from 'googleapis';
 import characters from '../_data/characters.json' with { type: 'json' };
 import type { Character } from '../types/index.js';
+import { getStaleCalendarEventIds } from '../utils/calendar.js';
 import { authorize, convertEventId } from '../utils/index.js';
 
 type Calendar = GoogleApis.calendar_v3.Calendar;
@@ -107,5 +108,32 @@ export const createEvents = async () => {
 		}
 
 		await updateCalendarEvent(calendar, nextEvent);
+	}
+
+	const eventIds: string[] = [];
+	let pageToken = '';
+	do {
+		const response = await calendar.events.list({
+			calendarId: process.env.GOOGLE_CALENDAR_ID,
+			...(pageToken ? { pageToken } : {}),
+		});
+		for (const event of response.data.items ?? []) {
+			if (typeof event.id === 'string' && event.id !== '') {
+				eventIds.push(event.id);
+			}
+		}
+		pageToken = response.data.nextPageToken ?? '';
+	} while (pageToken);
+
+	const staleEventIds = getStaleCalendarEventIds(
+		characters.map((character) => character.id),
+		eventIds,
+	);
+	for (const eventId of staleEventIds) {
+		console.log('delete calendar event:', eventId);
+		await calendar.events.delete({
+			calendarId: process.env.GOOGLE_CALENDAR_ID,
+			eventId,
+		});
 	}
 };
