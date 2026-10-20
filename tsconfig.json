@@ -1,7 +1,6 @@
 {
 	"extends": "@sapphire-sh/utils/tsconfig.json",
 	"compilerOptions": {
-		"outDir": "./build",
 		"resolveJsonModule": true,
 		"noEmit": true
 	}
