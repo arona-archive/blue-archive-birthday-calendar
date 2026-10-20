@@ -24,18 +24,18 @@
 	"homepage": "https://github.com/arona-archive/blue-archive-birthdays-calendar#readme",
 	"dependencies": {
 		"@sapphire-sh/utils": "^3.23.0",
-		"googleapis": "^171.4.0"
+		"googleapis": "^186.0.0"
 	},
 	"devDependencies": {
-		"@swc-node/register": "^1.11.1",
-		"@types/node": "^25.2.3",
-		"eslint": "^9.39.4",
+		"@swc-node/register": "^1.12.1",
+		"@types/node": "^26.6.5",
+		"eslint": "^10.13.0",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-promise": "^7.2.1",
-		"prettier": "^3.5.3",
+		"eslint-plugin-promise": "^7.3.0",
+		"prettier": "^3.9.10",
 		"prettier-plugin-organize-imports": "^4.1.0",
-		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.58.0",
+		"typescript": "^7.0.2",
+		"typescript-eslint": "^8.72.0",
 		"vitest": "^5.0.1"
 	},
 	"type": "module"
