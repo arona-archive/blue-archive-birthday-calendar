@@ -40,6 +40,7 @@ vi.mock('../_data/characters.json', () => ({
 import { createEvents, logSkippedCharacter } from './createEvents.js';
 
 afterEach(() => {
+	operations.length = 0;
 	vi.unstubAllEnvs();
 	vi.restoreAllMocks();
 });
@@ -57,6 +58,15 @@ it('deletes stale events after synchronizing characters across all pages', async
 		[{ calendarId: 'calendar-under-test', eventId: '00000456' }],
 		[{ calendarId: 'calendar-under-test', eventId: '00000789' }],
 	]);
+});
+
+it('skips calendar writes in dry run mode', async () => {
+	vi.stubEnv('GOOGLE_CALENDAR_ID', 'calendar-under-test');
+	vi.stubEnv('CALENDAR_DRY_RUN', 'true');
+	await createEvents();
+
+	expect(operations).toEqual(['list', 'list']);
+	expect(calendar.events.get.mock.calls).toEqual([[{ calendarId: 'calendar-under-test', eventId: '00000123' }]]);
 });
 
 it('logs the skipped character name as an object', () => {

@@ -1,3 +1,4 @@
+import { readEnv } from '@sapphire-sh/utils';
 import type GoogleApis from 'googleapis';
 import { google } from 'googleapis';
 import characters from '../_data/characters.json' with { type: 'json' };
@@ -7,6 +8,8 @@ import { authorize, convertEventId } from '../utils/index.js';
 
 type Calendar = GoogleApis.calendar_v3.Calendar;
 type CalendarEvent = GoogleApis.calendar_v3.Schema$Event;
+
+const isDryRun = (): boolean => readEnv('CALENDAR_DRY_RUN') === 'true';
 
 const calendarEventEquals = (p: CalendarEvent, q: CalendarEvent): boolean => {
 	if (p.status === 'cancelled') {
@@ -42,6 +45,10 @@ const getCalendarEvent = async (
 const createCalendarEvent = async (calendar: Calendar, event: CalendarEvent) => {
 	console.log('create calendar event:', event);
 
+	if (isDryRun()) {
+		return;
+	}
+
 	await calendar.events.insert({
 		calendarId: process.env.GOOGLE_CALENDAR_ID,
 		requestBody: event,
@@ -50,6 +57,10 @@ const createCalendarEvent = async (calendar: Calendar, event: CalendarEvent) => 
 
 const updateCalendarEvent = async (calendar: Calendar, event: CalendarEvent) => {
 	console.log('update calendar event:', event);
+
+	if (isDryRun()) {
+		return;
+	}
 
 	await calendar.events.update({
 		calendarId: process.env.GOOGLE_CALENDAR_ID,
@@ -135,6 +146,9 @@ export const createEvents = async () => {
 	);
 	for (const eventId of staleEventIds) {
 		console.log('delete calendar event:', eventId);
+		if (isDryRun()) {
+			continue;
+		}
 		await calendar.events.delete({
 			calendarId: process.env.GOOGLE_CALENDAR_ID,
 			eventId,

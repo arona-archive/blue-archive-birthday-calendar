@@ -31,6 +31,8 @@ jobs:
       - run: npm ci
 
       - run: bash ./scripts/start.sh
+        env:
+          CALENDAR_DRY_RUN: ${{ github.event_name == 'pull_request' }}
 
       - if: always()
         uses: 8398a7/action-slack@v3
