@@ -3,11 +3,13 @@
 *.tsbuildinfo
 .DS_Store
 .env
-build/
-coverage/
-data/
-dist/
-lib/
+.next/
+/build/
+/coverage/
+/data/
+/dist/
+/lib/
+next-env.d.ts
 node_modules/
 # @sapphire-sh/utils:end
 

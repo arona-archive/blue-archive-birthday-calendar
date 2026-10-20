@@ -19,12 +19,12 @@ A birthday calendar for characters of Blue Archive
 
 ```html
 <iframe
-  src="https://calendar.google.com/calendar/embed?src=c_6raf1l1s0jsoi02ejg9ljif0k8%40group.calendar.google.com"
-  style="border: 0"
-  width="800"
-  height="600"
-  frameborder="0"
-  scrolling="no"
+	src="https://calendar.google.com/calendar/embed?src=c_6raf1l1s0jsoi02ejg9ljif0k8%40group.calendar.google.com"
+	style="border: 0"
+	width="800"
+	height="600"
+	frameborder="0"
+	scrolling="no"
 ></iframe>
 ```
 

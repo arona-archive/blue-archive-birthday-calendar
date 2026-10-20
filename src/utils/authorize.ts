@@ -1,7 +1,7 @@
+import { type Auth, google } from 'googleapis';
 import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
-import { type Auth, google } from 'googleapis';
 import { rootDir } from '../constants/index.js';
 
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];

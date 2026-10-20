@@ -1,2 +1,6 @@
+# @sapphire-sh/utils:start
+.next
 build
 dist
+package-lock.json
+# @sapphire-sh/utils:end
