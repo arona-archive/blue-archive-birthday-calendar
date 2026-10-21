@@ -15,7 +15,11 @@ updates:
         - '@sapphire-sh/utils'
     ignore:
       - dependency-name: '@sapphire-sh/utils'
+    assignees:
+      - 'sapphire-sh'
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    assignees:
+      - 'sapphire-sh'

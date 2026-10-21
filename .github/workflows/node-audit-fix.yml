@@ -16,3 +16,4 @@ jobs:
       PULL_REQUEST_TOKEN: ${{ secrets.PULL_REQUEST_TOKEN }}
     with:
       runner: 'ubuntu-latest'
+      assignee: 'sapphire-sh'

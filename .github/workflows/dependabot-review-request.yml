@@ -12,3 +12,4 @@ jobs:
       pull-requests: write
     with:
       runner: 'ubuntu-latest'
+      reviewers: 'sapphire-sh'
