@@ -7,6 +7,7 @@ on:
       - dependabot-review-request
       - node-audit-fix
       - node-shared-config-update
+      - node-ui-update
       - node-utils-update
       - node-verify
       - Publish Userscript
