@@ -10,11 +10,14 @@ updates:
           - '*'
         exclude-patterns:
           - '@sapphire-sh/utils'
+          - '@sapphire-sh/ui'
     cooldown:
       exclude:
         - '@sapphire-sh/utils'
+        - '@sapphire-sh/ui'
     ignore:
       - dependency-name: '@sapphire-sh/utils'
+      - dependency-name: '@sapphire-sh/ui'
     assignees:
       - 'sapphire-sh'
   - package-ecosystem: github-actions

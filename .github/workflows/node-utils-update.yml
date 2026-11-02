@@ -7,7 +7,7 @@ on:
 
 jobs:
   update:
-    uses: sapphire-sh/github-actions/.github/workflows/node-utils-update-template.yml@main
+    uses: sapphire-sh/github-actions/.github/workflows/node-sapphire-package-update-template.yml@main
     permissions:
       contents: write
       issues: write
