@@ -23,7 +23,7 @@
 	},
 	"homepage": "https://github.com/arona-archive/blue-archive-birthdays-calendar#readme",
 	"dependencies": {
-		"@sapphire-sh/utils": "^3.48.0",
+		"@sapphire-sh/utils": "^3.49.0",
 		"googleapis": "^189.0.0"
 	},
 	"devDependencies": {
