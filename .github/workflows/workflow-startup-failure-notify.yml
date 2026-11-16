@@ -11,6 +11,7 @@ on:
       - node-utils-update
       - node-verify
       - Publish Userscript
+      - pull-request-rebase
     types:
       - completed
 

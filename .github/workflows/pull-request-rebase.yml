@@ -1,0 +1,13 @@
+name: pull-request-rebase
+
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  rebase:
+    uses: sapphire-sh/github-actions/.github/workflows/pull-request-rebase-template.yml@main
+    permissions:
+      actions: write
+      pull-requests: write
